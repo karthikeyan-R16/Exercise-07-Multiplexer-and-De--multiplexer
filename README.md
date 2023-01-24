@@ -52,12 +52,36 @@ If the control input changes to AB = 10, then all the gates are restricted excep
 
 
 ### PROGRAM 
-/*
-Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
-
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: karthikeyan R RegisterNumber: 22009322 */
+# MULTIPLEXER
+```
+module ex07(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire P,Q,R,S,S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (P,S0c,S1c,I0);
+and(Q,S0c,S1,I1);
+and(R,S0,S1c,I2);
+and(S,S0,S1,I3);
+or(Y,P,Q,R,S);
+endmodule
+```
+# DEMULTIPLEXER
+```
+module ex07(Y0,Y1,Y2,Y3,S0,S1,I);
+input I,S0,S1;
+output Y0,Y1,Y2,Y3;
+wire S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (Y0,I,S0c,S1c);
+and(Y1,I,S0c,S1);
+and(Y2,I,S0,S1c);
+and(Y3,I,S0,S1);
+endmodule
+```
 
 
 
@@ -65,7 +89,9 @@ RegisterNumber:
 
 ### RTL LOGIC  
 
-
+![output](./R1.png)
+![output](./r2.png)
+![output](./r2%20(1).png)
 
 
 
@@ -73,16 +99,23 @@ RegisterNumber:
 
 
 ### TIMING DIGRAMS  
+![output](./m1.png)
+![output](./m2.png)
+![output](./m3.png)
+![output](./m4.png)
+![output](./m4%20(1).png)
 
 
 
 
 
 ### TRUTH TABLE 
-
+![output](./T1.png)
 
 
 
 
 
 ### RESULTS 
+4 X1 multiplexer and 1X4 de multiplexer has been implemented using verilog and outputs are validated.
+
