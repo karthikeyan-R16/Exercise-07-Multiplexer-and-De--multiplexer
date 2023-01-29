@@ -53,66 +53,53 @@ If the control input changes to AB = 10, then all the gates are restricted excep
 
 ### PROGRAM 
 /* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: karthikeyan R RegisterNumber: 22009322 */
-# MULTIPLEXER
 ```
-module ex07(I0,I1,I2,I3,S0,S1,Y);
-input I0,I1,I2,I3,S0,S1;
-output Y;
-wire P,Q,R,S,S0c,S1c;
-not(S0c,S0);
-nor(S1c,S1);
-and (P,S0c,S1c,I0);
-and(Q,S0c,S1,I1);
-and(R,S0,S1c,I2);
-and(S,S0,S1,I3);
-or(Y,P,Q,R,S);
+
+4x1 MULTIPLEXER:
+
+module multiplexer(i0,i1,i2,i3,s0,s1,y);
+input i0,i1,i2,i3,s0,s1;
+output y;
+not(s0c,s0);
+nor(s1c,s1);
+wire p,q,r,s,s0c,s1c;
+and(p,s0c,s1c,i0);
+and(q,s0c,s1,i1);
+and(r,s0,s1c,i2);
+and(s,s0,s1,i3);
+or(y,p,q,r,s);
+endmodule
+
+1x4 DE-MULTIPLEXER:
+
+module demultiplexer(y0,y1,y2,y3,s0,s1,i);
+input s0,s1,i;
+output y0,y1,y2,y3;
+wire s0c, s1c;
+nor(s0c,s0);
+nor(s1c,s1);
+and(y0,i,s0c,s1);
+and(y1,i,s0c,s1c);
+and(y2,i,s0,s1c);
+and(y3,i,s0,s1);
 endmodule
 ```
-# DEMULTIPLEXER
-```
-module ex07(Y0,Y1,Y2,Y3,S0,S1,I);
-input I,S0,S1;
-output Y0,Y1,Y2,Y3;
-wire S0c,S1c;
-not(S0c,S0);
-nor(S1c,S1);
-and (Y0,I,S0c,S1c);
-and(Y1,I,S0c,S1);
-and(Y2,I,S0,S1c);
-and(Y3,I,S0,S1);
-endmodule
-```
+# RTL Logic diagram
+MULTIPLEXER
+![output](./multiplexer.png)
+DEMULTIPLEXER
+![output](./demultiplexer.png)
 
-
-
-
-
-### RTL LOGIC  
-
-![output](./R1.png)
-![output](./r2.png)
-![output](./r2%20(1).png)
-
-
-
-
-
-
-### TIMING DIGRAMS  
-![output](./m1.png)
-![output](./m2.png)
-![output](./m3.png)
-![output](./m4.png)
-![output](./m4%20(1).png)
-
-
-
-
-
-### TRUTH TABLE 
-![output](./T1.png)
-
-
+## Timing diagram
+MULTIPLEXER
+![output](./multiming.png)
+DEMULTIPLEXER
+![output](./demultiming.png)
+## Truthtable
+MULTIPLEXER
+![output](./multable.png)
+DEMULTIPLEXER
+![output](./demultable.png)
 
 
 
